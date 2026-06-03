@@ -1,0 +1,30 @@
+Continuous Integration with Jenkins
+Module 22
+•
+1 hour to complete
+Module details
+In this module, we will introduce Jenkins, cover its setup on different platforms, and show you how to integrate it with GitHub for seamless continuous integration and automation of your projects.
+
+What's included
+9 videos
+1 assignment
+
+
+Hide info about module content
+9 videos
+•
+Total 66 minutes
+Jenkins Features and Advantages•9 minutes
+Jenkins Prerequisites•2 minutes
+Jenkins Setup And Installation - Generic WAR File•9 minutes
+Jenkins Setup and Installation - Windows•8 minutes
+Jenkins Setup and Installation – Mac•12 minutes
+Jenkins Configuration•9 minutes
+Securing Jenkins•7 minutes
+Jenkins Plugins Management•5 minutes
+Building A Freestyle Project Using Jenkins and GitHub•5 minutes
+1 assignment
+•
+Total 15 minutes
+Continuous Integration with Jenkins - Assessment•15 minutes
+

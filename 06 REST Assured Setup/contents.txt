@@ -1,0 +1,23 @@
+REST API Automation Overview
+Module 7
+•
+2 hours to complete
+Module details
+In this module, we will demonstrate practical examples of sending GET and POST requests using REST Assured, validate responses, and explore the JSON hierarchy for proper validation in REST API testing.
+
+What's included
+7 videos
+1 assignment
+
+
+Hide info about module content
+7 videos
+•
+Total 84 minutes
+Get Request - Practical Example•17 minutes
+How to get response body•8 minutes
+Understanding JSON Hierarchy•10 minutes
+How to Validate Response Body•9 minutes
+POST Request - Practical Example•16 minutes
+POST Request with Java Object Serialization•15 minutes
+Query Parameters Versus Path Parameters•11 minutes

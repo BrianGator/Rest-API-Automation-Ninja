@@ -1,0 +1,23 @@
+REST API Testing Using Postman Client
+Module 5
+•
+1 hour to complete
+Module details
+In this module, we will demonstrate how to use Postman to send various HTTP requests like GET and POST, work with real API examples like Google Maps, and help you learn how to secure your requests using API keys.
+
+What's included
+7 videos
+1 assignment
+
+
+Hide info about module content
+7 videos
+•
+Total 53 minutes
+Understanding Google Maps API Documentation•10 minutes
+How to Get Google API Key•3 minutes
+GET Request Postman Client - Practical Example•11 minutes
+POST Request Postman Client - Practical Example•10 minutes
+Delete Request Postman Client - Practical Example•5 minutes
+POST-GET-DELETE Complete Workflow - Practical Example•6 minutes
+Understanding WADL Documentation•7 minutes

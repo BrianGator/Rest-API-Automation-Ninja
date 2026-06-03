@@ -1,0 +1,23 @@
+REST Client Setup
+Module 4
+•
+27 minutes to complete
+Module details
+In this module, we will walk you through the installation and setup of Postman, advanced REST clients, and REST Easy clients. These tools are essential for executing and testing RESTful web services efficiently.
+
+What's included
+3 videos
+1 assignment
+
+
+Hide info about module content
+3 videos
+•
+Total 12 minutes
+Postman REST Client Installation•6 minutes
+Advanced REST Client Setup•3 minutes
+REST Easy Client - Setup•4 minutes
+1 assignment
+•
+Total 15 minutes
+REST Client Setup - Assessment•15 minutes
