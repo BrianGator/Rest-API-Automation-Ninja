@@ -1,1074 +1,1272 @@
-# Rest API Automation With Rest Assured - Novice To Ninja
+# Rest API Automation Ninja Showcase
 
-A comprehensive guide and practical examples for automating REST APIs using REST Assured library with Java. This repository contains step-by-step tutorials, real-world examples, and best practices for API test automation from beginner to advanced levels.
+A comprehensive REST API automation showcase using **Java**, **REST Assured**, **TestNG**, **Maven**, **Postman**, **GitHub**, and **Jenkins**. This repository is designed as a practical learning path from REST API fundamentals through a maintainable end-to-end API automation framework.
 
-REST Assured is a powerful Java library that simplifies testing and validating RESTful APIs/RESTful Web services (similar to Selenium WebDriver for web applications). Almost all modern web applications use REST APIs to communicate, making API testing a critical part of QA.
+REST Assured is a Java library for testing and validating RESTful APIs. It supports BDD-style request syntax, HTTP method execution, response validation, JSON/XML extraction, logging, reusable request/response specifications, TestNG execution, Maven builds, and CI integration.
 
 **Written by Brian McCarthy**
 
 ---
 
-## 📚 Table of Contents
+## Table of Contents
 
-- [Languages Used](#languages-used)
-- [Methodologies Used](#methodologies-used)
-- [File Structure](#file-structure)
-- [Project Overview](#project-overview)
-- [Code Methodologies & Patterns](#code-methodologies--patterns)
-- [Getting Started](#getting-started)
-- [REST API Automation Examples](#rest-api-automation-examples)
-- [Tutorial & Guide](#tutorial--guide)
-- [Tips & Best Practices](#tips--best-practices)
-- [Learning Path](#learning-path)
-
----
-
-## Languages Used
-
-- **Java** (100%) - Core programming language for all test automation code
-  - Version: Java 8 or higher recommended
-  - Uses OOP principles, annotations, and lambda expressions
-
----
-
-## Methodologies Used
-
-### 1. **Behavior-Driven Development (BDD)**
-```
-Given I have this information
-When I perform this action
-Then this should be the output
-```
-
-### 2. **Test-Driven Development (TDD)**
-- Write test cases first
-- Design APIs based on test requirements
-- Ensure code quality and maintainability
-
-### 3. **Keyword-Driven Testing**
-- Reusable test utilities
-- Common keywords for API testing
-- Modular and maintainable test code
-
-### 4. **Data-Driven Testing**
-- Parameterized tests
-- Multiple test data scenarios
-- XML/JSON response parsing
-
-### 5. **API Testing Best Practices**
-- Request/Response validation
-- Status code verification
-- Response time monitoring
-- Authentication and authorization testing
+| Module | Topic | Time | Primary Coverage |
+|---|---|---:|---|
+| 1 | [Introduction](#module-1-introduction) | 22 min | Course structure, support, outcomes, API automation roadmap. |
+| 2 | [Java Setup and Installation](#module-2-java-setup-and-installation) | 1 hr | JDK, Eclipse, Mac/Windows setup, Java version selection. |
+| 3 | [REST API Introduction](#module-3-rest-api-introduction) | 1 hr | REST architecture, endpoints, methods, headers, response validation. |
+| 4 | [REST Client Setup](#module-4-rest-client-setup) | 27 min | Postman, Advanced REST Client, REST Easy Client. |
+| 5 | [REST API Testing Using Postman Client](#module-5-rest-api-testing-using-postman-client) | 1 hr | GET, POST, DELETE, API keys, WADL, manual validation. |
+| 6 | [REST Assured Setup](#module-6-rest-assured-setup) | 1 hr | REST Assured dependency setup and build path cleanup. |
+| 7 | [REST API Automation Overview](#module-7-rest-api-automation-overview) | 2 hr | GET/POST automation, JSON hierarchy, response validation, POJO serialization. |
+| 8 | [OAuth Real World API Example](#module-8-oauth-real-world-api-example) | 1 hr | OAuth concepts, access tokens, authenticated GET/POST testing. |
+| 9 | [Validating JSON Response](#module-9-validating-json-response) | 30 min | JSON extraction, JSON Path, field validation. |
+| 10 | [End-To-End API Workflow](#module-10-end-to-end-api-workflow) | 1 hr | Create, read, validate, delete workflow chaining. |
+| 11 | [Validating XML Response](#module-11-validating-xml-response) | 1 hr | XML extraction, XML Path, XML response validation. |
+| 12 | [Request and Response Logging](#module-12-request-and-response-logging) | 1 hr | Request logs, response logs, debugging API failures. |
+| 13 | [REST Assured Assertions](#module-13-rest-assured-assertions) | 1 hr | Hard assertions, soft assertions, validation strategy. |
+| 14 | [Useful Tricks](#module-14-useful-tricks) | 1 hr | Root path, response time validation, performance checks. |
+| 15 | [REST Assured Specifications](#module-15-rest-assured-specifications) | 1 hr | Request specs, response specs, shared API configuration. |
+| 16 | [Automation Framework - Part 1](#module-16-automation-framework---part-1) | 1 hr | Maven framework setup, constants, dependencies. |
+| 17 | [Automation Framework - Part 2](#module-17-automation-framework---part-2) | 1 hr | REST utility classes and reusable API operations. |
+| 18 | [Automation Framework - Part 3](#module-18-automation-framework---part-3) | 1 hr | Converting standalone tests into framework tests. |
+| 19 | [Practice Exercise](#module-19-practice-exercise) | 1 hr | Convert an end-to-end workflow into framework format. |
+| 20 | [End-To-End Framework Execution](#module-20-end-to-end-framework-execution) | 1 hr | TestNG and Maven suite execution. |
+| 21 | [Git and GitHub – Version Control System](#module-21-git-and-github--version-control-system) | 2 hr | Git setup, commits, remotes, branches, conflicts, clone. |
+| 22 | [Continuous Integration with Jenkins](#module-22-continuous-integration-with-jenkins) | 1 hr | Jenkins setup, plugins, GitHub integration, CI execution. |
+| 23 | [Build Management with Maven](#module-23-build-management-with-maven) | 2 hr | Maven features, repositories, POM, lifecycle commands. |
+| 24 | [Conclusion](#module-24-conclusion) | 1 hr | Course wrap-up, next steps, continued API automation growth. |
 
 ---
 
-## File Structure
+## Languages, Tools, and Methodologies Used
 
-```
-Rest-API-Automation-Ninja/
-│
-├── README.md (this file)
-│
-├── S1 - S3/          # Foundational concepts and setup
-│
-├── S7/               # Basic API Automation Examples
-│   ├── 1-GetRequestDemo.java
-│   ├── 2-GetRequestDemo.java
-│   ├── 4-ValidateResponse.java
-│   ├── 5-POSTRequestDemo.java
-│   ├── 6-POSTRequestWithPOJO.java
-│   └── 6-PlacesAddModel.java (POJO Model)
-│
-├── S8/               # Twitter API Examples
-│   └── 5-TwitterPOSTRequest.java
-│
-├── S11/              # Response Extraction
-│   └── 1-GoogleExtractResponse.java
-│
-├── S12/              # Logging Examples
-│   └── 2-RequestLoggingExample.java
-│
-├── S14/              # Useful Tricks & Techniques
-│   ├── 1-TwitterRootPathExample.java
-│   └── 2-TwitterCheckResponseTime.java
-│
-├── S15/              # Specifications
-│   └── 2-RequestSpecificationDemo.java
-│
-├── S17/              # Utility Classes & Reusable Components
-│   ├── 3-RestUtilities.java
-│   └── 4-RestUtilities.java
-│
-├── S18-S21, S23/     # Advanced Workflows & Integration Tests
-│   ├── UserTimelineTest.java
-│   └── TwitterWorkflowTest.java
-│
-└── S19/              # End-to-End Workflows
-    ├── 1-TwitterEndToEndWorkflow.java
-    └── 2-TwitterWorkflowTest.java
+- **Java**: Main programming language for REST Assured automation.
+- **REST Assured**: API automation, request execution, and response validation.
+- **TestNG**: Test execution, assertions, suites, dependencies, and data providers.
+- **Maven**: Dependency management and command-line test execution.
+- **Postman**: Manual REST client validation before automation.
+- **Git and GitHub**: Version control and portfolio hosting.
+- **Jenkins**: Continuous integration for automated test execution.
+- **BDD style**: `given()`, `when()`, `then()` test readability.
+- **Data-driven testing**: Running the same API test against multiple inputs.
+- **Framework design**: Specifications, utilities, constants, models, and reusable workflows.
+
+---
+
+## Recommended Project Structure
+
+```text
+Rest-API-Automation-Ninja-Showcase/
+├── README.md
+├── pom.xml
+├── testng.xml
+├── src/test/java/
+│   ├── tests/
+│   │   ├── GetRequestTest.java
+│   │   ├── PostRequestTest.java
+│   │   ├── JsonValidationTest.java
+│   │   ├── XmlValidationTest.java
+│   │   └── EndToEndWorkflowTest.java
+│   ├── framework/
+│   │   ├── RestUtilities.java
+│   │   ├── RequestSpecFactory.java
+│   │   ├── ResponseSpecFactory.java
+│   │   └── Endpoints.java
+│   ├── model/
+│   │   └── PlaceRequest.java
+│   └── config/
+│       └── TestConfig.java
+└── reports/
 ```
 
 ---
 
-## Project Overview
+## Core Maven Dependencies
 
-### What You Will Learn
+```xml
+<dependencies>
+    <dependency>
+        <groupId>io.rest-assured</groupId>
+        <artifactId>rest-assured</artifactId>
+        <version>5.4.0</version>
+        <scope>test</scope>
+    </dependency>
 
-- ✅ Design and structure API test automation frameworks
-- ✅ Write GET, POST, PUT, and DELETE requests
-- ✅ Validate response status codes, headers, and body content
-- ✅ Extract and parse JSON/XML responses
-- ✅ Implement request/response specifications
-- ✅ Handle authentication (OAuth, Basic Auth)
-- ✅ Create POJO (Plain Old Java Object) models for request/response mapping
-- ✅ Build reusable utility classes
-- ✅ Implement end-to-end API workflows
-- ✅ Perform data-driven testing
-- ✅ Monitor response times and performance
+    <dependency>
+        <groupId>org.testng</groupId>
+        <artifactId>testng</artifactId>
+        <version>7.10.2</version>
+        <scope>test</scope>
+    </dependency>
 
-### Target Audience
+    <dependency>
+        <groupId>org.hamcrest</groupId>
+        <artifactId>hamcrest</artifactId>
+        <version>2.2</version>
+        <scope>test</scope>
+    </dependency>
 
-- QA professionals and manual testers starting API automation
-- QA automation professionals expanding their test automation skills
-- Developers needing API testing knowledge
-- Anyone interested in REST API testing with Java
+    <dependency>
+        <groupId>io.rest-assured</groupId>
+        <artifactId>json-path</artifactId>
+        <version>5.4.0</version>
+        <scope>test</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>io.rest-assured</groupId>
+        <artifactId>xml-path</artifactId>
+        <version>5.4.0</version>
+        <scope>test</scope>
+    </dependency>
+</dependencies>
+```
+
+**Expected Result:** Maven downloads REST Assured, TestNG, Hamcrest, JSON Path, and XML Path dependencies so API tests can compile and run.
 
 ---
 
-## Code Methodologies & Patterns
+# Full REST API Automation Tutorial by Module
 
-### 1. **BDD/Given-When-Then Pattern**
+## Module 1: Introduction
 
-Rest Assured uses a fluent API that naturally reads like BDD scenarios:
+### Programming Concept Area
+
+This module introduces the course structure and final outcome: building practical REST API automation skills from manual REST client testing to a reusable Java REST Assured automation framework.
+
+### Code Sample
+
+```java
+public class CourseGoal {
+    public static void main(String[] args) {
+        System.out.println("Goal: Build a REST Assured API automation framework.");
+    }
+}
+```
+
+### Expected Output
+
+```text
+Goal: Build a REST Assured API automation framework.
+```
+
+### Expected Result
+
+The learner understands the course roadmap and the final framework objective.
+
+### Key Takeaways
+
+- API testing validates service behavior without relying on the UI.
+- REST Assured enables readable code-based API tests.
+- The course moves from basic requests to reusable framework design.
+
+---
+
+## Module 2: Java Setup and Installation
+
+### Programming Concept Area
+
+REST Assured automation requires a working Java environment. This module covers JDK installation, Eclipse installation, Mac/Windows setup, and environment verification.
+
+### Code Sample
+
+```bash
+java -version
+javac -version
+mvn -version
+```
+
+```java
+public class JavaSetupCheck {
+    public static void main(String[] args) {
+        System.out.println("Java setup is working");
+    }
+}
+```
+
+### Expected Output
+
+```text
+java version "17.x.x"
+javac 17.x.x
+Apache Maven 3.x.x
+Java setup is working
+```
+
+### Expected Result
+
+The terminal confirms the JDK, compiler, and Maven are available.
+
+### Key Takeaways
+
+- Install a JDK, not only a JRE.
+- Configure `JAVA_HOME` correctly.
+- Verify Java and Maven before writing tests.
+- Use Eclipse, IntelliJ IDEA, or VS Code for Java automation.
+
+---
+
+## Module 3: REST API Introduction
+
+### Programming Concept Area
+
+REST APIs expose resources through endpoints and HTTP methods. Common methods include `GET`, `POST`, `PUT`, and `DELETE`. API tests verify status codes, headers, body content, response time, and error behavior.
+
+### Code Sample
+
+```http
+GET /api/users/123 HTTP/1.1
+Host: api.example.com
+Accept: application/json
+```
+
+```json
+{
+  "id": 123,
+  "name": "Brian",
+  "role": "QA Automation Engineer"
+}
+```
+
+### Expected Output
+
+```text
+Status: 200 OK
+Content-Type: application/json
+Response body contains user id, name, and role.
+```
+
+### Expected Result
+
+The API returns a successful response and a JSON body representing the requested resource.
+
+### Key Takeaways
+
+- Endpoints identify resources.
+- HTTP methods describe operations.
+- Headers provide metadata.
+- API tests should validate status, body, headers, and timing.
+
+---
+
+## Module 4: REST Client Setup
+
+### Programming Concept Area
+
+REST clients such as Postman, Advanced REST Client, and REST Easy help testers manually explore APIs before automation.
+
+### Code Sample
+
+```http
+GET https://jsonplaceholder.typicode.com/users?page=1
+Accept: application/json
+```
+
+### Expected Output
+
+```json
+[
+  { "id": 1, "name": "Leanne Graham" },
+  { "id": 2, "name": "Ervin Howell" }
+]
+```
+
+### Expected Result
+
+The REST client sends a request and displays response body, status, headers, and response time.
+
+### Key Takeaways
+
+- Use Postman to prototype before automation.
+- Save base URLs and values as environment variables.
+- Validate manual behavior before coding a test.
+- REST clients help debug request setup problems quickly.
+
+---
+
+## Module 5: REST API Testing Using Postman Client
+
+### Programming Concept Area
+
+Postman can send GET, POST, PUT, and DELETE requests, validate responses, work with API keys, and document request workflows before those workflows are automated.
+
+### Code Sample
+
+```javascript
+pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Response is JSON", function () {
+    pm.response.to.have.header("Content-Type");
+});
+```
+
+### Expected Output
+
+```text
+PASS Status code is 200
+PASS Response is JSON
+```
+
+### Expected Result
+
+Postman validates response expectations automatically after the request completes.
+
+### Key Takeaways
+
+- API documentation defines endpoints, parameters, and expected responses.
+- API keys are commonly sent through headers or query parameters.
+- Postman tests can validate status codes and body fields.
+- Manual workflows can be converted into REST Assured tests.
+
+---
+
+## Module 6: REST Assured Setup
+
+### Programming Concept Area
+
+REST Assured setup includes adding Maven dependencies, importing static methods, cleaning build path conflicts, and writing the first automated API test.
+
+### Code Sample
+
+```java
+import org.testng.annotations.Test;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.Matchers.equalTo;
+
+public class RestAssuredSetupTest {
+    @Test
+    public void shouldReturnUser() {
+        given()
+            .baseUri("https://jsonplaceholder.typicode.com")
+        .when()
+            .get("/users/1")
+        .then()
+            .statusCode(200)
+            .body("id", equalTo(1));
+    }
+}
+```
+
+### Expected Output
+
+```text
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+```
+
+### Expected Result
+
+The first REST Assured test runs successfully and validates status code and response body.
+
+### Key Takeaways
+
+- REST Assured tests use `given()`, `when()`, and `then()`.
+- Static imports make test syntax readable.
+- TestNG can execute REST Assured tests.
+- Build path cleanup prevents dependency conflicts.
+
+---
+
+## Module 7: REST API Automation Overview
+
+### Programming Concept Area
+
+This module covers GET/POST automation, response extraction, JSON hierarchy, response validation, Java object serialization, query parameters, and path parameters.
+
+### Code Sample
 
 ```java
 @Test
-public void testGetRequest() {
-    given()                                    // Given - Setup preconditions
-        .param("units", "imperial")
-        .param("origins", "Washington,DC")
-        .param("destinations", "New+York+City,NY")
-        .param("key", "YOUR_API_KEY")
-    .when()                                    // When - Perform action
-        .get("/distancematrix/json")
-    .then()                                    // Then - Verify results
+public void validateJsonHierarchy() {
+    given()
+        .baseUri("https://jsonplaceholder.typicode.com")
+    .when()
+        .get("/users/1")
+    .then()
         .statusCode(200)
-        .body("rows[0].elements[0].distance.text", equalTo("225 mi"));
+        .body("address.city", equalTo("Gwenborough"));
 }
 ```
 
-### 2. **POJO (Plain Old Java Object) Pattern**
+### Expected Output
 
-Models for automatic request/response serialization/deserialization:
+```text
+Status code: 200
+address.city = Gwenborough
+Test passed
+```
+
+### Expected Result
+
+REST Assured navigates a nested JSON hierarchy and validates a nested field.
+
+### Key Takeaways
+
+- JSON paths validate nested fields.
+- Query parameters filter or configure requests.
+- Path parameters identify specific resources.
+- POJOs can serialize Java objects into JSON bodies.
+
+---
+
+## Module 8: OAuth Real World API Example
+
+### Programming Concept Area
+
+OAuth allows authorized access to protected APIs. In a safe demo framework, credentials should be loaded from environment variables or secure CI secrets, not hardcoded in source code.
+
+### Code Sample
 
 ```java
-public class PlacesAddModel {
-    private Map<String, Double> location;
-    private int accuracy;
-    private String name;
-    private String phone_number;
-    private String address;
-    private List<String> types;
-    private String website;
-    private String language;
-
-    // Getters and setters...
-}
-
-// Usage in test:
-PlacesAddModel places = new PlacesAddModel();
-places.setLocation(locationMap);
-places.setAccuracy(50);
-places.setName("Google Shoes!");
+String token = System.getenv("DEMO_API_TOKEN");
 
 given()
-    .queryParam("key", "YOUR_API_KEY")
-    .body(places)  // Automatically serialized to JSON
+    .baseUri("https://api.example.com")
+    .header("Authorization", "Bearer " + token)
 .when()
-    .post("/place/add/json")
+    .get("/account/profile")
 .then()
-    .statusCode(200)
-    .body("scope", equalTo("APP"));
+    .statusCode(200);
 ```
 
-### 3. **Request/Response Specifications Pattern**
+### Expected Output
 
-Reusable specifications for common request/response patterns:
+```text
+Status code: 200
+Authenticated request completed successfully.
+```
+
+### Expected Result
+
+The API accepts the authenticated request when a valid token is supplied securely.
+
+### Key Takeaways
+
+- OAuth and bearer-token APIs require authenticated requests.
+- Never commit real tokens or secrets to GitHub.
+- Use environment variables, CI secrets, or secure config files.
+- Test valid, missing, expired, and unauthorized credential scenarios.
+
+---
+
+## Module 9: Validating JSON Response
+
+### Programming Concept Area
+
+JSON validation confirms that API responses contain correct fields, values, arrays, objects, and nested structures.
+
+### Code Sample
 
 ```java
-public static RequestSpecification getRequestSpecification() {
-    AuthenticationScheme authScheme = RestAssured.oauth(
-        Auth.CONSUMER_KEY,
-        Auth.CONSUMER_SECRET,
-        Auth.ACCESS_TOKEN,
-        Auth.ACCESS_SECRET
-    );
-    
-    REQUEST_BUILDER = new RequestSpecBuilder();
-    REQUEST_BUILDER.setBaseUri(Path.BASE_URI);
-    REQUEST_BUILDER.setAuth(authScheme);
-    REQUEST_SPEC = REQUEST_BUILDER.build();
-    
-    return REQUEST_SPEC;
+Response response = given()
+    .baseUri("https://jsonplaceholder.typicode.com")
+.when()
+    .get("/users");
+
+String firstUserName = response.jsonPath().getString("[0].name");
+System.out.println(firstUserName);
+```
+
+### Expected Output
+
+```text
+Leanne Graham
+```
+
+### Expected Result
+
+The test extracts the first user's name from a JSON array response.
+
+### Key Takeaways
+
+- JSON Path extracts values from nested responses.
+- Array indexes can access specific response records.
+- Extracted values can drive downstream API calls.
+- Validate required fields and business rules.
+
+---
+
+## Module 10: End-To-End API Workflow
+
+### Programming Concept Area
+
+End-to-end API workflows chain multiple requests: create data, read data, validate data, update data, and delete data. These tests confirm that multiple endpoints work together.
+
+### Code Sample
+
+```java
+private String createdId;
+
+@Test
+public void createRecord() {
+    createdId = given()
+        .baseUri("https://jsonplaceholder.typicode.com")
+        .contentType("application/json")
+        .body("{\"title\":\"demo\",\"body\":\"workflow\",\"userId\":1}")
+    .when()
+        .post("/posts")
+    .then()
+        .statusCode(201)
+        .extract()
+        .path("id").toString();
 }
 
-public static ResponseSpecification getResponseSpecification() {
-    RESPONSE_BUILDER = new ResponseSpecBuilder();
-    RESPONSE_BUILDER.expectStatusCode(200);
-    RESPONSE_BUILDER.expectResponseTime(lessThan(3L), TimeUnit.SECONDS);
-    RESPONSE_SPEC = RESPONSE_BUILDER.build();
-    
-    return RESPONSE_SPEC;
+@Test(dependsOnMethods = "createRecord")
+public void readRecord() {
+    given()
+        .baseUri("https://jsonplaceholder.typicode.com")
+        .pathParam("id", createdId)
+    .when()
+        .get("/posts/{id}")
+    .then()
+        .statusCode(anyOf(equalTo(200), equalTo(404)));
 }
+```
 
-// Usage in tests:
+### Expected Output
+
+```text
+createRecord PASSED
+readRecord PASSED
+```
+
+### Expected Result
+
+The workflow creates a record, stores the generated ID, and uses it in a dependent request.
+
+### Key Takeaways
+
+- E2E API workflows depend on response data.
+- Extract IDs and pass them into later requests.
+- Use cleanup steps when APIs persist real data.
+- Use TestNG dependencies carefully.
+
+---
+
+## Module 11: Validating XML Response
+
+### Programming Concept Area
+
+Some APIs return XML instead of JSON. XML Path allows tests to extract and validate XML elements and attributes.
+
+### Code Sample
+
+```java
+Response response = given()
+    .baseUri("https://www.w3schools.com")
+.when()
+    .get("/xml/note.xml");
+
+String to = response.xmlPath().getString("note.to");
+System.out.println(to);
+```
+
+### Expected Output
+
+```text
+Tove
+```
+
+### Expected Result
+
+The test extracts an XML element value using XML Path.
+
+### Key Takeaways
+
+- XML APIs require XML Path validation.
+- Validate content type before parsing XML.
+- REST Assured supports both JSON and XML parsing.
+- XML tests should validate elements, attributes, and structure.
+
+---
+
+## Module 12: Request and Response Logging
+
+### Programming Concept Area
+
+Logging helps troubleshoot request construction, parameters, headers, response bodies, status mismatches, and API failures.
+
+### Code Sample
+
+```java
+given()
+    .baseUri("https://jsonplaceholder.typicode.com")
+    .log().all()
+.when()
+    .get("/posts/1")
+.then()
+    .log().body()
+    .statusCode(200);
+```
+
+### Expected Output
+
+```text
+Request method: GET
+Request URI: https://jsonplaceholder.typicode.com/posts/1
+Response Body: { "userId": 1, "id": 1, "title": "..." }
+```
+
+### Expected Result
+
+The test prints request details and response body, making failures easier to debug.
+
+### Key Takeaways
+
+- Request logs reveal outgoing configuration.
+- Response logs reveal returned data.
+- Logging is valuable in CI failures.
+- Avoid logging secrets or tokens in shared logs.
+
+---
+
+## Module 13: REST Assured Assertions
+
+### Programming Concept Area
+
+Assertions verify API behavior. Hard assertions stop immediately. Soft assertions collect multiple failures and report them together.
+
+### Code Sample
+
+```java
+Response response = given()
+    .baseUri("https://jsonplaceholder.typicode.com")
+.when()
+    .get("/posts/1");
+
+SoftAssert softAssert = new SoftAssert();
+softAssert.assertEquals(response.statusCode(), 200);
+softAssert.assertTrue(response.asString().contains("userId"));
+softAssert.assertAll();
+```
+
+### Expected Output
+
+```text
+All soft assertions passed.
+```
+
+### Expected Result
+
+The test validates multiple response properties before reporting the final result.
+
+### Key Takeaways
+
+- Hard assertions stop on first failure.
+- Soft assertions report multiple failures together.
+- Validate status, headers, body, schema, and timing.
+- Assertion strategy should match business risk.
+
+---
+
+## Module 14: Useful Tricks
+
+### Programming Concept Area
+
+REST Assured root paths shorten repeated JSON path expressions. Response time checks validate performance expectations.
+
+### Code Sample
+
+```java
+given()
+    .baseUri("https://jsonplaceholder.typicode.com")
+.when()
+    .get("/users/1")
+.then()
+    .rootPath("address")
+    .body("city", equalTo("Gwenborough"))
+    .detachRootPath("address")
+    .time(lessThan(3L), TimeUnit.SECONDS);
+```
+
+### Expected Output
+
+```text
+address.city validated
+Response time less than 3 seconds
+```
+
+### Expected Result
+
+The test validates a nested field using root path and confirms the response time is under the threshold.
+
+### Key Takeaways
+
+- Root paths shorten repeated assertions.
+- Response time checks support performance validation.
+- Thresholds should be realistic for CI.
+- Tricks should improve readability, not hide intent.
+
+---
+
+## Module 15: REST Assured Specifications
+
+### Programming Concept Area
+
+Specifications centralize common request and response configuration, such as base URI, headers, authentication, content type, status code, and response timing.
+
+### Code Sample
+
+```java
+RequestSpecification requestSpec = new RequestSpecBuilder()
+    .setBaseUri("https://jsonplaceholder.typicode.com")
+    .addHeader("Accept", "application/json")
+    .build();
+
+ResponseSpecification responseSpec = new ResponseSpecBuilder()
+    .expectStatusCode(200)
+    .expectContentType(ContentType.JSON)
+    .build();
+
 given()
     .spec(requestSpec)
 .when()
-    .get("/endpoint")
+    .get("/posts/1")
 .then()
     .spec(responseSpec);
 ```
 
-### 4. **Utility Class Pattern**
+### Expected Output
 
-Centralized reusable methods for common API operations:
+```text
+Request specification applied
+Response specification validated
+Test passed
+```
+
+### Expected Result
+
+The test uses reusable request and response configuration instead of repeating setup in every test.
+
+### Key Takeaways
+
+- Specs enforce DRY test design.
+- Request specs standardize setup.
+- Response specs standardize expectations.
+- Specs make framework tests easier to maintain.
+
+---
+
+## Module 16: Automation Framework - Part 1
+
+### Programming Concept Area
+
+Framework design organizes constants, endpoints, configuration, dependencies, test classes, and reusable components.
+
+### Code Sample
+
+```java
+public class Endpoints {
+    public static final String USERS = "/users";
+    public static final String USER_BY_ID = "/users/{id}";
+    public static final String POSTS = "/posts";
+}
+
+public class TestConfig {
+    public static final String BASE_URI = "https://jsonplaceholder.typicode.com";
+}
+```
+
+### Expected Output
+
+```text
+Constants are available to all framework test classes.
+```
+
+### Expected Result
+
+Tests can reference endpoints and base paths from centralized classes instead of hardcoding strings repeatedly.
+
+### Key Takeaways
+
+- Frameworks reduce duplication.
+- Constants prevent endpoint string drift.
+- Maven standardizes project structure.
+- Dependencies should be managed in `pom.xml`.
+
+---
+
+## Module 17: Automation Framework - Part 2
+
+### Programming Concept Area
+
+Utility classes wrap common REST operations such as sending GET/POST requests, adding parameters, extracting responses, and applying shared specs.
+
+### Code Sample
 
 ```java
 public class RestUtilities {
-    public static String ENDPOINT;
-    public static RequestSpecification REQUEST_SPEC;
-    
-    public static RequestSpecification createQueryParam(
-        RequestSpecification rspec,
-        String param,
-        String value) {
-        return rspec.queryParam(param, value);
-    }
-    
-    public static Response getResponse(
-        RequestSpecification reqSpec,
-        String type) {
-        Response response = null;
-        if (type.equalsIgnoreCase("get")) {
-            response = given().spec(REQUEST_SPEC).get(ENDPOINT);
-        } else if (type.equalsIgnoreCase("post")) {
-            response = given().spec(REQUEST_SPEC).post(ENDPOINT);
-        }
-        response.then().log().all();
-        return response;
-    }
-}
-```
-
-### 5. **End-to-End Workflow Pattern**
-
-Chaining multiple API calls with data dependencies:
-
-```java
-@Test
-public void postTweet() {
-    Response response = given()
-        .auth().oauth(consumerKey, consumerSecret, accessToken, accessSecret)
-        .queryParam("status", "My First Tweet")
-    .when()
-        .post(EndPoints.STATUSES_TWEET_POST)
-    .then()
-        .statusCode(200)
-        .extract()
-        .response();
-    
-    tweetId = response.path("id_str");
-}
-
-@Test(dependsOnMethods = {"postTweet"})
-public void readTweet() {
-    Response res = given()
-        .spec(requestSpec)
-        .queryParam("id", tweetId)
-    .when()
-        .get(EndPoints.STATUSES_TWEET_READ)
-    .then()
-        .statusCode(200)
-        .extract()
-        .response();
-}
-
-@Test(dependsOnMethods = {"readTweet"})
-public void deleteTweet() {
-    given()
-        .spec(requestSpec)
-        .pathParam("id", tweetId)
-    .when()
-        .post(EndPoints.STATUSES_TWEET_DESTROY)
-    .then()
-        .statusCode(200);
-}
-```
-
----
-
-## Getting Started
-
-### Prerequisites
-
-- Java 8 or higher installed
-- Maven or Gradle for dependency management
-- IDE (Eclipse, IntelliJ IDEA, or Visual Studio Code)
-- TestNG framework for test execution
-
-### Maven Dependencies
-
-Add to your `pom.xml`:
-
-```xml
-<!-- REST Assured -->
-<dependency>
-    <groupId>io.rest-assured</groupId>
-    <artifactId>rest-assured</artifactId>
-    <version>4.5.1</version>
-    <scope>test</scope>
-</dependency>
-
-<!-- TestNG -->
-<dependency>
-    <groupId>org.testng</groupId>
-    <artifactId>testng</artifactId>
-    <version>7.4.0</version>
-    <scope>test</scope>
-</dependency>
-
-<!-- Hamcrest for assertions -->
-<dependency>
-    <groupId>org.hamcrest</groupId>
-    <artifactId>hamcrest</artifactId>
-    <version>2.2</version>
-    <scope>test</scope>
-</dependency>
-
-<!-- JSON Path -->
-<dependency>
-    <groupId>io.rest-assured</groupId>
-    <artifactId>json-path</artifactId>
-    <version>4.5.1</version>
-    <scope>test</scope>
-</dependency>
-
-<!-- Gson for JSON serialization -->
-<dependency>
-    <groupId>com.google.code.gson</groupId>
-    <artifactId>gson</artifactId>
-    <version>2.8.8</version>
-</dependency>
-```
-
----
-
-## REST API Automation Examples
-
-### Example 1: Simple GET Request
-
-```java
-@BeforeClass
-public void setup() {
-    RestAssured.baseURI = "https://maps.googleapis.com";
-    RestAssured.basePath = "/maps/api";
-}
-
-@Test
-public void getDistanceMatrix() {
-    given()
-        .param("units", "imperial")
-        .param("origins", "Washington,DC")
-        .param("destinations", "New+York+City,NY")
-        .param("key", "YOUR_API_KEY")
-    .when()
-        .get("/distancematrix/json")
-    .then()
-        .statusCode(200);
-}
-```
-
-### Example 2: POST Request with Body
-
-```java
-@Test
-public void postWithJsonBody() {
-    Response res = given()
-        .queryParam("key", "YOUR_API_KEY")
-        .body("{"
-            + "\"location\": {"
-            + "\"lat\": -33.8669710,"
-            + "\"lng\": 151.1958750"
-            + "},"
-            + "\"accuracy\": 50,"
-            + "\"name\": \"Google Shoes!\""
-            + "}")
-    .when()
-        .post("/place/add/json");
-    
-    System.out.println(res.body().asString());
-}
-```
-
-### Example 3: Response Validation
-
-```java
-@Test
-public void validateResponse() {
-    given()
-        .param("units", "imperial")
-        .param("origins", "Washington,DC")
-        .param("destinations", "New+York+City,NY")
-        .param("key", "YOUR_API_KEY")
-    .when()
-        .get("/distancematrix/json")
-    .then()
-        .statusCode(200)
-        .and()
-        .body("rows[0].elements[0].distance.text", equalTo("225 mi"))
-        .contentType(ContentType.JSON);
-}
-```
-
-### Example 4: Extract Response Data
-
-```java
-@Test
-public void extractResponseData() {
-    Response response = given()
-        .queryParam("units", "imperial")
-        .queryParam("origins", "Washington,DC")
-        .queryParam("destinations", "New+York+City,NY")
-        .queryParam("key", "YOUR_API_KEY")
-    .when()
-        .get("/distancematrix/xml")
-    .then()
-        .statusCode(200)
-        .extract()
-        .response();
-    
-    String responseString = response.asString();
-    System.out.println(responseString);
-    
-    // Extract specific value using path
-    String value = response.path("distancematrixresponse.row.element.duration.value");
-    System.out.println("The duration value is: " + value);
-}
-```
-
-### Example 5: POST with POJO
-
-```java
-@Test
-public void postWithPOJO() {
-    Map<String, Double> locationMap = new HashMap<>();
-    locationMap.put("lat", -33.8669710);
-    locationMap.put("lng", 151.1958750);
-    
-    ArrayList<String> types = new ArrayList<>();
-    types.add("shoe_store");
-    
-    PlacesAddModel places = new PlacesAddModel();
-    places.setLocation(locationMap);
-    places.setAccuracy(50);
-    places.setName("Google Shoes!");
-    places.setPhone_number("(02) 9374 4000");
-    places.setAddress("48 Pirrama Road, Pyrmont, NSW 2009, Australia");
-    places.setTypes(types);
-    places.setWebsite("http://www.google.com.au/");
-    places.setLanguage("en-AU");
-    
-    given()
-        .queryParam("key", "YOUR_API_KEY")
-        .body(places)  // Automatically serialized to JSON
-    .when()
-        .post("/place/add/json")
-    .then()
-        .statusCode(200)
-        .contentType(ContentType.JSON)
-        .body("scope", equalTo("APP"))
-        .body("status", equalTo("OK"));
-}
-```
-
-### Example 6: Authentication (OAuth)
-
-```java
-@Test
-public void oAuthRequest() {
-    given()
-        .auth()
-        .oauth(consumerKey, consumerSecret, accessToken, accessSecret)
-        .queryParam("user_id", "apiautomation")
-    .when()
-        .get("/user_timeline.json")
-    .then()
-        .statusCode(200);
-}
-```
-
-### Example 7: Response Time Validation
-
-```java
-@Test
-public void validateResponseTime() {
-    given()
-        .auth()
-        .oauth(consumerKey, consumerSecret, accessToken, accessSecret)
-        .queryParam("user_id", "apiautomation")
-    .when()
-        .get("/user_timeline.json")
-    .then()
-        .statusCode(200)
-        .time(lessThan(1L), TimeUnit.SECONDS);
-}
-```
-
-### Example 8: Request Specifications
-
-```java
-@BeforeClass
-public void setup() {
-    AuthenticationScheme authScheme = RestAssured.oauth(
-        consumerKey,
-        consumerSecret,
-        accessToken,
-        accessSecret
-    );
-    
-    RequestSpecBuilder requestBuilder = new RequestSpecBuilder();
-    requestBuilder.setBaseUri("https://api.twitter.com");
-    requestBuilder.setBasePath("/1.1/statuses");
-    requestBuilder.addQueryParam("user_id", "apiautomation");
-    requestBuilder.setAuth(authScheme);
-    requestSpec = requestBuilder.build();
-}
-
-@Test
-public void testWithRequestSpec() {
-    given()
-        .spec(requestSpec)
-    .when()
-        .get("/user_timeline.json")
-    .then()
-        .statusCode(200);
-}
-```
-
-### Example 9: Root Path for JSON Navigation
-
-```java
-@BeforeClass
-public void setup() {
-    RestAssured.baseURI = "https://api.twitter.com";
-    RestAssured.basePath = "/1.1/statuses";
-    RestAssured.rootPath = "entities.hashtags[0]";  // Set root path
-}
-
-@Test
-public void testWithRootPath() {
-    given()
-        .auth()
-        .oauth(consumerKey, consumerSecret, accessToken, accessSecret)
-        .queryParam("user_id", "apiautomation")
-    .when()
-        .get("/user_timeline.json")
-    .then()
-        .statusCode(200)
-        .body("text", hasItem("multiple"))
-        .body("size()", equalTo(2));
-}
-```
-
-### Example 10: End-to-End Workflow
-
-```java
-@Test
-public void postTweet() {
-    Response response = given()
-        .auth()
-        .oauth(consumerKey, consumerSecret, accessToken, accessSecret)
-        .queryParam("status", "My First Tweet")
-    .when()
-        .post("/update.json")
-    .then()
-        .statusCode(200)
-        .extract()
-        .response();
-    
-    tweetId = response.path("id_str");
-}
-
-@Test(dependsOnMethods = {"postTweet"})
-public void readTweet() {
-    Response response = given()
-        .auth()
-        .oauth(consumerKey, consumerSecret, accessToken, accessSecret)
-        .queryParam("id", tweetId)
-    .when()
-        .get("/show.json")
-    .then()
-        .extract()
-        .response();
-    
-    String text = response.path("text");
-    System.out.println("The tweet text is: " + text);
-}
-
-@Test(dependsOnMethods = {"readTweet"})
-public void deleteTweet() {
-    given()
-        .auth()
-        .oauth(consumerKey, consumerSecret, accessToken, accessSecret)
-        .pathParam("id", tweetId)
-    .when()
-        .post("/destroy/{id}.json")
-    .then()
-        .statusCode(200);
-}
-```
-
----
-
-## Tutorial & Guide
-
-### Step 1: Setting Up Your First Test
-
-1. Create a new Java class with @BeforeClass and @Test annotations
-2. Initialize baseURI and basePath in @BeforeClass
-3. Write your test using given-when-then syntax
-
-```java
-import io.restassured.RestAssured;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Test;
-import static io.restassured.RestAssured.given;
-
-public class FirstAPITest {
-    @BeforeClass
-    public void setup() {
-        RestAssured.baseURI = "https://api.example.com";
-    }
-    
-    @Test
-    public void testGetEndpoint() {
-        given()
-            .param("id", "123")
-        .when()
-            .get("/users")
-        .then()
-            .statusCode(200);
-    }
-}
-```
-
-### Step 2: Understanding Request Parameters
-
-```java
-// Query Parameters (in URL)
-given()
-    .queryParam("key", "value")
-    .queryParam("search", "test")
-    
-// Path Parameters (replacing {variable} in path)
-given()
-    .pathParam("userId", "123")
-.when()
-    .get("/users/{userId}")
-    
-// Form Parameters (for form data)
-given()
-    .formParam("username", "john")
-    .formParam("password", "secret")
-    
-// Header Parameters
-given()
-    .header("Authorization", "Bearer token")
-    .header("Content-Type", "application/json")
-```
-
-### Step 3: Validating Responses
-
-```java
-// Status Code
-.then()
-    .statusCode(200)
-    
-// Content Type
-.then()
-    .contentType(ContentType.JSON)
-    
-// Body Content
-.then()
-    .body("status", equalTo("success"))
-    .body("data.name", equalTo("John"))
-    .body("data.age", greaterThan(18))
-    .body("items", hasSize(5))
-    
-// Headers
-.then()
-    .header("Content-Type", containsString("application/json"))
-```
-
-### Step 4: Extracting Response Data
-
-```java
-// Extract entire response
-Response response = given()
-    .queryParam("id", "123")
-.when()
-    .get("/users")
-.then()
-    .extract()
-    .response();
-
-// Extract specific path
-String name = response.path("data.name");
-int age = response.path("data.age");
-
-// Using JsonPath for complex parsing
-JsonPath jsonPath = new JsonPath(response.asString());
-List<String> names = jsonPath.getList("items.name");
-```
-
-### Step 5: Working with Authentication
-
-```java
-// Basic Authentication
-given()
-    .auth()
-    .basic("username", "password")
-    
-// OAuth Authentication
-given()
-    .auth()
-    .oauth(consumerKey, consumerSecret, accessToken, accessSecret)
-    
-// Bearer Token
-given()
-    .auth()
-    .oauth2("access_token")
-    .header("Authorization", "Bearer access_token")
-```
-
-### Step 6: Creating Reusable Request Specifications
-
-```java
-RequestSpecBuilder builder = new RequestSpecBuilder();
-builder.setBaseUri("https://api.example.com");
-builder.setBasePath("/api/v1");
-builder.addHeader("Accept", "application/json");
-builder.setAuth(AuthenticationScheme authScheme);
-
-RequestSpecification requestSpec = builder.build();
-
-// Use in multiple tests
-given()
-    .spec(requestSpec)
-    .queryParam("page", "1")
-.when()
-    .get("/users")
-.then()
-    .statusCode(200);
-```
-
-### Step 7: Data-Driven Testing
-
-```java
-@DataProvider(name = "userIds")
-public Object[][] getUserIds() {
-    return new Object[][] {
-        { "1" },
-        { "2" },
-        { "3" }
-    };
-}
-
-@Test(dataProvider = "userIds")
-public void testMultipleUsers(String userId) {
-    given()
-        .pathParam("id", userId)
-    .when()
-        .get("/users/{id}")
-    .then()
-        .statusCode(200);
-}
-```
-
----
-
-## Tips & Best Practices
-
-### 1. **Always Validate Status Codes First**
-```java
-.then()
-    .statusCode(200)  // Validate response code before assertions
-    .body("status", equalTo("success"));
-```
-
-### 2. **Use Meaningful Test Names**
-```java
-@Test
-public void shouldReturnUserDataWhenValidUserIdProvided() {
-    // Test code
-}
-```
-
-### 3. **Leverage Request/Response Specifications**
-```java
-// Don't repeat base URI and auth in every test
-// Use specifications for DRY (Don't Repeat Yourself) principle
-given()
-    .spec(requestSpec)
-    .queryParam("specific", "value")
-```
-
-### 4. **Extract and Reuse Response Data**
-```java
-// Use extracted data for dependent API calls
-Response response = given()...extract().response();
-String id = response.path("id");
-
-// Use in next request
-given()
-    .pathParam("id", id)
-.when()
-    .get("/users/{id}");
-```
-
-### 5. **Implement Proper Logging**
-```java
-given()
-    .log()
-    .all()  // Log all request details if validation fails
-.when()
-    .get("/endpoint")
-.then()
-    .log()
-    .body()  // Always log response body on failure
-    .statusCode(200);
-```
-
-### 6. **Use TestNG Dependencies for Workflows**
-```java
-@Test
-public void createUser() {
-    // Create user
-}
-
-@Test(dependsOnMethods = {"createUser"})
-public void updateUser() {
-    // Uses user created in previous test
-}
-
-@Test(dependsOnMethods = {"updateUser"})
-public void deleteUser() {
-    // Cleans up after workflow
-}
-```
-
-### 7. **Create Utility Classes for Common Operations**
-```java
-public class ApiUtils {
-    public static Response makeGetRequest(String endpoint, Map<String, String> params) {
+    public static Response get(String endpoint) {
         return given()
-            .queryParams(params)
+            .baseUri(TestConfig.BASE_URI)
         .when()
             .get(endpoint)
         .then()
-            .statusCode(200)
+            .extract()
+            .response();
+    }
+
+    public static Response post(String endpoint, Object body) {
+        return given()
+            .baseUri(TestConfig.BASE_URI)
+            .contentType(ContentType.JSON)
+            .body(body)
+        .when()
+            .post(endpoint)
+        .then()
             .extract()
             .response();
     }
 }
 ```
 
-### 8. **Validate Response Times for Performance**
+### Expected Output
+
+```text
+Reusable GET and POST helper methods are available.
+```
+
+### Expected Result
+
+Test classes can call utility methods instead of rewriting REST Assured setup every time.
+
+### Key Takeaways
+
+- Utilities encapsulate repeated request logic.
+- Helpers improve readability.
+- Avoid hiding important test intent.
+- Keep utilities small and focused.
+
+---
+
+## Module 18: Automation Framework - Part 3
+
+### Programming Concept Area
+
+This module converts standalone API tests into framework-compatible classes using shared specifications, constants, utility methods, and reusable validation.
+
+### Code Sample
+
 ```java
-.then()
-    .statusCode(200)
-    .time(lessThan(5L), TimeUnit.SECONDS)
-    .body("status", equalTo("success"));
-```
+public class UserApiTest {
+    @Test
+    public void shouldReturnUsers() {
+        Response response = RestUtilities.get(Endpoints.USERS);
 
-### 9. **Handle Dynamic Response Data**
-```java
-// Use anyOf for multiple valid responses
-.body("status", anyOf(equalTo("success"), equalTo("pending")))
-
-// Use hasItems for array validation
-.body("items", hasItems("item1", "item2"))
-```
-
-### 10. **Organize Tests by Feature/Module**
-```
-tests/
-├── users/
-│   ├── CreateUserTest.java
-│   ├── UpdateUserTest.java
-│   └── DeleteUserTest.java
-├── products/
-│   ├── GetProductTest.java
-│   └── SearchProductTest.java
-└── utils/
-    ├── RestUtilities.java
-    └── TestDataBuilder.java
-```
-
-### 11. **Use Constants for URLs and Endpoints**
-```java
-public class Endpoints {
-    public static final String GET_USERS = "/users";
-    public static final String CREATE_USER = "/users";
-    public static final String UPDATE_USER = "/users/{id}";
-    public static final String DELETE_USER = "/users/{id}";
-}
-
-// Usage
-.when()
-    .get(Endpoints.GET_USERS)
-```
-
-### 12. **Implement Proper Error Handling**
-```java
-Response response = given()
-    .queryParam("id", "invalid")
-.when()
-    .get("/users/{id}")
-.then()
-    .extract()
-    .response();
-
-if (response.statusCode() == 404) {
-    System.out.println("User not found");
-} else if (response.statusCode() == 200) {
-    System.out.println("User found");
+        Assert.assertEquals(response.statusCode(), 200);
+        Assert.assertTrue(response.asString().contains("username"));
+    }
 }
 ```
 
-### 13. **Use Builders for Complex Request Bodies**
-```java
-PlacesAddModel places = new PlacesAddModel();
-places.setName("Test Place");
-places.setLocation(locationMap);
-// ... set other properties
+### Expected Output
 
+```text
+shouldReturnUsers PASSED
+```
+
+### Expected Result
+
+A standalone API test now uses the framework structure and reusable utilities.
+
+### Key Takeaways
+
+- Convert repeated scripts into framework tests.
+- Use common utilities and endpoint constants.
+- Keep assertions visible and meaningful.
+- Framework tests should be easier to maintain.
+
+---
+
+## Module 19: Practice Exercise
+
+### Programming Concept Area
+
+The practice exercise reinforces framework conversion by transforming an end-to-end workflow into reusable framework format.
+
+### Code Sample
+
+```java
+public class WorkflowPracticeTest {
+    private String recordId;
+
+    @Test
+    public void createRecord() {
+        Response response = RestUtilities.post(Endpoints.POSTS, Map.of("title", "API Framework"));
+        recordId = response.path("id").toString();
+        Assert.assertNotNull(recordId);
+    }
+
+    @Test(dependsOnMethods = "createRecord")
+    public void readRecord() {
+        Response response = RestUtilities.get(Endpoints.POSTS + "/" + recordId);
+        Assert.assertTrue(response.statusCode() == 200 || response.statusCode() == 404);
+    }
+}
+```
+
+### Expected Output
+
+```text
+createRecord PASSED
+readRecord PASSED
+```
+
+### Expected Result
+
+The workflow shares created response data across dependent test methods.
+
+### Key Takeaways
+
+- Practice converts knowledge into framework skill.
+- E2E tests should create, validate, and clean up data.
+- Test dependencies should be intentional.
+- Reusable patterns reduce workflow complexity.
+
+---
+
+## Module 20: End-To-End Framework Execution
+
+### Programming Concept Area
+
+Framework execution uses TestNG suites and Maven commands to run all tests from the command line, locally or in CI.
+
+### Code Sample
+
+```xml
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="REST API Automation Suite">
+    <test name="Regression Tests">
+        <classes>
+            <class name="tests.UserApiTest"/>
+            <class name="tests.WorkflowPracticeTest"/>
+        </classes>
+    </test>
+</suite>
+```
+
+```bash
+mvn clean test -DsuiteXmlFile=testng.xml
+```
+
+### Expected Output
+
+```text
+[INFO] BUILD SUCCESS
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+```
+
+### Expected Result
+
+Maven runs the TestNG suite and reports successful framework execution.
+
+### Key Takeaways
+
+- TestNG suites organize framework execution.
+- Maven enables repeatable command-line runs.
+- CI tools can run the same Maven command.
+- Reports should be reviewed after each execution.
+
+---
+
+## Module 21: Git and GitHub – Version Control System
+
+### Programming Concept Area
+
+Git tracks code changes. GitHub stores the repository remotely and supports collaboration, branching, conflict resolution, and project sharing.
+
+### Code Sample
+
+```bash
+git init
+git add .
+git commit -m "Initial REST API automation framework"
+git branch -M master
+git remote add origin https://github.com/BrianGator/Rest-API-Automation-Ninja-Showcase.git
+git push -u origin master
+```
+
+### Expected Output
+
+```text
+[master abc123] Initial REST API automation framework
+Branch 'master' set up to track remote branch 'master'
+```
+
+### Expected Result
+
+The local automation framework is committed and pushed to GitHub.
+
+### Key Takeaways
+
+- Commit frequently with meaningful messages.
+- Use branches for feature work.
+- Resolve merge conflicts carefully.
+- GitHub makes automation work visible and reviewable.
+
+---
+
+## Module 22: Continuous Integration with Jenkins
+
+### Programming Concept Area
+
+Jenkins automates framework execution after code changes. A Jenkins job can pull from GitHub, run Maven tests, and report results.
+
+### Code Sample
+
+```bash
+mvn clean test -DsuiteXmlFile=testng.xml
+```
+
+### Expected Output
+
+```text
+Started by GitHub webhook or manual build
+Checking out source code
+Running Maven tests
+BUILD SUCCESS
+```
+
+### Expected Result
+
+Jenkins executes the REST API automation suite and reports build status.
+
+### Key Takeaways
+
+- CI gives fast feedback on API regression failures.
+- Jenkins can integrate with GitHub repositories.
+- Maven commands should work locally before CI setup.
+- Jenkins logs help troubleshoot build and test failures.
+
+---
+
+## Module 23: Build Management with Maven
+
+### Programming Concept Area
+
+Maven manages project structure, dependencies, plugins, repositories, and lifecycle commands. It makes test execution predictable across machines and CI systems.
+
+### Code Sample
+
+```bash
+mvn clean
+mvn test
+mvn clean test
+mvn dependency:tree
+```
+
+### Expected Output
+
+```text
+[INFO] BUILD SUCCESS
+[INFO] Tests run: 10, Failures: 0, Errors: 0, Skipped: 0
+```
+
+### Expected Result
+
+Maven cleans the project, resolves dependencies, compiles tests, and executes the suite.
+
+### Key Takeaways
+
+- `pom.xml` is the Maven project definition file.
+- Maven downloads dependencies from repositories.
+- Maven lifecycle phases standardize build behavior.
+- `mvn clean test` is a core CI execution command.
+
+---
+
+## Module 24: Conclusion
+
+### Programming Concept Area
+
+The conclusion summarizes the complete REST API automation path and next steps: expanding coverage, strengthening framework structure, adding CI reporting, and applying patterns to real business APIs.
+
+### Code Sample
+
+```text
+[ ] Java installed
+[ ] Maven installed
+[ ] REST Assured dependencies added
+[ ] TestNG suite created
+[ ] Request/response specs built
+[ ] Utility classes created
+[ ] JSON/XML validations implemented
+[ ] E2E workflow tests added
+[ ] GitHub repository updated
+[ ] Jenkins CI job configured
+```
+
+### Expected Output
+
+```text
+REST API automation framework ready for portfolio demonstration.
+```
+
+### Expected Result
+
+The learner has a complete foundation for REST API automation with Java, REST Assured, TestNG, Maven, GitHub, and Jenkins.
+
+### Key Takeaways
+
+- REST API automation is a high-value QA skill.
+- Framework design matters as much as individual tests.
+- CI execution turns tests into a repeatable quality gate.
+- Continue improving with reporting, data-driven tests, schema validation, and security checks.
+
+---
+
+# Additional REST API Automation Examples
+
+## GET Request Validation
+
+```java
+@Test
+public void shouldGetPostById() {
+    given()
+        .baseUri("https://jsonplaceholder.typicode.com")
+        .pathParam("id", 1)
+    .when()
+        .get("/posts/{id}")
+    .then()
+        .statusCode(200)
+        .body("id", equalTo(1))
+        .body("userId", equalTo(1));
+}
+```
+
+**Expected Result:** The API returns post `1`, and the test validates the ID and owner user ID.
+
+## POST Request with JSON Body
+
+```java
+@Test
+public void shouldCreatePost() {
+    String body = """
+        {
+          "title": "API automation",
+          "body": "REST Assured test body",
+          "userId": 1
+        }
+        """;
+
+    given()
+        .baseUri("https://jsonplaceholder.typicode.com")
+        .contentType(ContentType.JSON)
+        .body(body)
+    .when()
+        .post("/posts")
+    .then()
+        .statusCode(201)
+        .body("title", equalTo("API automation"));
+}
+```
+
+**Expected Result:** The API accepts the JSON payload and returns `201 Created`.
+
+## Query Parameter vs Path Parameter
+
+```java
+// Query parameter example: /posts?userId=1
 given()
-    .body(places)
+    .queryParam("userId", 1)
 .when()
-    .post("/places")
+    .get("/posts")
 .then()
-    .statusCode(201);
+    .statusCode(200);
+
+// Path parameter example: /posts/1
+given()
+    .pathParam("id", 1)
+.when()
+    .get("/posts/{id}")
+.then()
+    .statusCode(200);
 ```
 
-### 14. **Test Edge Cases**
-```java
-// Test with null values
-// Test with empty strings
-// Test with maximum length values
-// Test with special characters
-// Test with different data types
-```
-
-### 15. **Maintain Test Data Isolation**
-```java
-@BeforeMethod
-public void setup() {
-    // Fresh setup before each test
-}
-
-@AfterMethod
-public void cleanup() {
-    // Clean up test data after each test
-}
-```
+**Expected Result:** Query parameters filter collections, while path parameters identify specific resources.
 
 ---
 
-## Learning Path
+# Best Practices
 
-### Beginner Level
-1. Basic GET requests
-2. Query parameters
-3. Status code validation
-4. Response body validation
-5. Understand BDD syntax
-
-### Intermediate Level
-6. POST requests with JSON body
-7. PUT and DELETE operations
-8. Response extraction
-9. POJO models
-10. Authentication (Basic, OAuth)
-
-### Advanced Level
-11. Request/Response specifications
-12. Reusable utility classes
-13. End-to-end workflows
-14. Complex JSON parsing
-15. Data-driven testing
-16. Test framework organization
-17. Performance testing
-18. Multi-threaded testing
+1. Validate status codes first.
+2. Validate content type and response schema.
+3. Keep request and response specs reusable.
+4. Do not hardcode secrets in test classes.
+5. Use environment variables or secure configuration for tokens.
+6. Keep test data isolated and clean up created records.
+7. Use meaningful test method names.
+8. Log request/response details only when useful.
+9. Keep endpoint constants in one place.
+10. Run the full suite through Maven before pushing.
+11. Add CI execution through Jenkins or GitHub Actions.
+12. Expand reporting with Surefire, Allure, or Extent Reports.
 
 ---
 
-## Additional Resources
+# Learning Path
 
-### REST Assured Documentation
-- [REST Assured Official Documentation](https://rest-assured.io/)
-- [GitHub Repository](https://github.com/rest-assured/rest-assured)
+## Beginner
 
-### Key Matchers for Assertions
-```java
-// Comparison
-equalTo(value)
-greaterThan(value)
-lessThan(value)
-greaterThanOrEqualTo(value)
+1. Learn REST architecture.
+2. Use Postman for GET/POST/DELETE requests.
+3. Install Java, Eclipse, Maven, and REST Assured.
+4. Write a first GET test.
+5. Validate status code and response body.
 
-// Collection
-hasItems(item1, item2)
-hasSize(size)
-contains(items)
-empty()
+## Intermediate
 
-// String
-containsString(substring)
-startsWith(prefix)
-endsWith(suffix)
+1. Add POST bodies and POJO serialization.
+2. Extract JSON/XML response data.
+3. Add authenticated request handling.
+4. Validate response times.
+5. Use TestNG assertions and dependencies.
 
-// Logical
-anyOf(matcher1, matcher2)
-allOf(matcher1, matcher2)
-not(matcher)
-```
+## Advanced
 
-### Common HTTP Status Codes
-- 200 OK - Request successful
-- 201 Created - Resource created
-- 204 No Content - Successful but no content
-- 400 Bad Request - Invalid request
-- 401 Unauthorized - Authentication required
-- 403 Forbidden - Access denied
-- 404 Not Found - Resource not found
-- 500 Internal Server Error - Server error
+1. Build request and response specifications.
+2. Create reusable REST utility classes.
+3. Convert standalone tests into framework tests.
+4. Build end-to-end workflows.
+5. Execute suites with Maven and TestNG.
+6. Push to GitHub.
+7. Run in Jenkins CI.
 
 ---
 
-## Next Steps
+# Common HTTP Status Codes
 
-1. Clone the repository
-2. Review examples in sequential folders (S1 through S23)
-3. Run individual test classes with TestNG
-4. Modify examples to test your own APIs
-5. Build your own test framework using patterns demonstrated
-6. Integrate with CI/CD pipeline
+| Code | Meaning | API Test Expectation |
+|---|---|---|
+| 200 | OK | Successful read/update operation. |
+| 201 | Created | Successful create operation. |
+| 204 | No Content | Successful delete or update with no response body. |
+| 400 | Bad Request | Invalid request payload or parameters. |
+| 401 | Unauthorized | Missing or invalid authentication. |
+| 403 | Forbidden | Authenticated but not allowed. |
+| 404 | Not Found | Resource does not exist. |
+| 409 | Conflict | Duplicate or conflicting resource state. |
+| 500 | Internal Server Error | Server-side failure. |
 
 ---
 
-**Happy API Testing! 🚀**
+# Next Steps
+
+1. Clone this repository.
+2. Review examples in the sequential section folders.
+3. Run individual REST Assured test classes with TestNG.
+4. Add your own API endpoints and test data.
+5. Refactor repeated request logic into utilities.
+6. Add request and response specifications.
+7. Execute the suite with Maven.
+8. Push changes to GitHub.
+9. Configure Jenkins CI execution.
+10. Add reporting and logs for portfolio evidence.
+
+---
+
+**Happy API Testing!**
 
 Written by Brian McCarthy
