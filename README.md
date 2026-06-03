@@ -10,32 +10,32 @@ REST Assured is a Java library for testing and validating RESTful APIs. It suppo
 
 ## Table of Contents
 
-| Module | Topic | Time | Primary Coverage |
-|---|---|---:|---|
-| 1 | [Introduction](#module-1-introduction) | 22 min | Course structure, support, outcomes, API automation roadmap. |
-| 2 | [Java Setup and Installation](#module-2-java-setup-and-installation) | 1 hr | JDK, Eclipse, Mac/Windows setup, Java version selection. |
-| 3 | [REST API Introduction](#module-3-rest-api-introduction) | 1 hr | REST architecture, endpoints, methods, headers, response validation. |
-| 4 | [REST Client Setup](#module-4-rest-client-setup) | 27 min | Postman, Advanced REST Client, REST Easy Client. |
-| 5 | [REST API Testing Using Postman Client](#module-5-rest-api-testing-using-postman-client) | 1 hr | GET, POST, DELETE, API keys, WADL, manual validation. |
-| 6 | [REST Assured Setup](#module-6-rest-assured-setup) | 1 hr | REST Assured dependency setup and build path cleanup. |
-| 7 | [REST API Automation Overview](#module-7-rest-api-automation-overview) | 2 hr | GET/POST automation, JSON hierarchy, response validation, POJO serialization. |
-| 8 | [OAuth Real World API Example](#module-8-oauth-real-world-api-example) | 1 hr | OAuth concepts, access tokens, authenticated GET/POST testing. |
-| 9 | [Validating JSON Response](#module-9-validating-json-response) | 30 min | JSON extraction, JSON Path, field validation. |
-| 10 | [End-To-End API Workflow](#module-10-end-to-end-api-workflow) | 1 hr | Create, read, validate, delete workflow chaining. |
-| 11 | [Validating XML Response](#module-11-validating-xml-response) | 1 hr | XML extraction, XML Path, XML response validation. |
-| 12 | [Request and Response Logging](#module-12-request-and-response-logging) | 1 hr | Request logs, response logs, debugging API failures. |
-| 13 | [REST Assured Assertions](#module-13-rest-assured-assertions) | 1 hr | Hard assertions, soft assertions, validation strategy. |
-| 14 | [Useful Tricks](#module-14-useful-tricks) | 1 hr | Root path, response time validation, performance checks. |
-| 15 | [REST Assured Specifications](#module-15-rest-assured-specifications) | 1 hr | Request specs, response specs, shared API configuration. |
-| 16 | [Automation Framework - Part 1](#module-16-automation-framework---part-1) | 1 hr | Maven framework setup, constants, dependencies. |
-| 17 | [Automation Framework - Part 2](#module-17-automation-framework---part-2) | 1 hr | REST utility classes and reusable API operations. |
-| 18 | [Automation Framework - Part 3](#module-18-automation-framework---part-3) | 1 hr | Converting standalone tests into framework tests. |
-| 19 | [Practice Exercise](#module-19-practice-exercise) | 1 hr | Convert an end-to-end workflow into framework format. |
-| 20 | [End-To-End Framework Execution](#module-20-end-to-end-framework-execution) | 1 hr | TestNG and Maven suite execution. |
-| 21 | [Git and GitHub – Version Control System](#module-21-git-and-github--version-control-system) | 2 hr | Git setup, commits, remotes, branches, conflicts, clone. |
-| 22 | [Continuous Integration with Jenkins](#module-22-continuous-integration-with-jenkins) | 1 hr | Jenkins setup, plugins, GitHub integration, CI execution. |
-| 23 | [Build Management with Maven](#module-23-build-management-with-maven) | 2 hr | Maven features, repositories, POM, lifecycle commands. |
-| 24 | [Conclusion](#module-24-conclusion) | 1 hr | Course wrap-up, next steps, continued API automation growth. |
+| Module | Topic | Primary Coverage |
+|---|---|---|
+| 1 | [Introduction](#module-1-introduction) | Course structure, support, outcomes, API automation roadmap. |
+| 2 | [Java Setup and Installation](#module-2-java-setup-and-installation) | JDK, Eclipse, Mac/Windows setup, Java version selection, environment validation. |
+| 3 | [REST API Introduction](#module-3-rest-api-introduction) | REST architecture, endpoints, HTTP methods, headers, status codes, response validation, error behavior. |
+| 4 | [REST Client Setup](#module-4-rest-client-setup) | Postman, Advanced REST Client, REST Easy Client, manual API exploration. |
+| 5 | [REST API Testing Using Postman Client](#module-5-rest-api-testing-using-postman-client) | GET, POST, DELETE, API keys, request bodies, collections, WADL, manual validation. |
+| 6 | [REST Assured Setup](#module-6-rest-assured-setup) | REST Assured dependency setup, IDE setup, Maven setup, build path cleanup. |
+| 7 | [REST API Automation Overview](#module-7-rest-api-automation-overview) | GET/POST automation, response body extraction, JSON hierarchy, validation, POJO serialization, query/path parameters. |
+| 8 | [OAuth Real World API Example](#module-8-oauth-real-world-api-example) | OAuth concepts, access tokens, secure credentials, authenticated GET/POST testing. |
+| 9 | [Validating JSON Response](#module-9-validating-json-response) | JSON extraction, JSON Path, nested response validation, arrays, objects, dynamic values. |
+| 10 | [End-To-End API Workflow](#module-10-end-to-end-api-workflow) | Create, read, validate, update, delete, path parameters, workflow chaining. |
+| 11 | [Validating XML Response](#module-11-validating-xml-response) | XML extraction, XML Path, content type validation, XML response structure. |
+| 12 | [Request and Response Logging](#module-12-request-and-response-logging) | Request logs, response logs, conditional logging, CI debugging. |
+| 13 | [REST Assured Assertions](#module-13-rest-assured-assertions) | Hard assertions, soft assertions, Hamcrest matchers, TestNG validation strategy. |
+| 14 | [Useful Tricks](#module-14-useful-tricks) | Root path, response time validation, reusable assertions, performance checks. |
+| 15 | [REST Assured Specifications](#module-15-rest-assured-specifications) | Request specs, response specs, shared API configuration, DRY test design. |
+| 16 | [Automation Framework - Part 1](#module-16-automation-framework---part-1) | Maven framework setup, constants, endpoints, configuration, dependencies. |
+| 17 | [Automation Framework - Part 2](#module-17-automation-framework---part-2) | REST utility classes, reusable API methods, common request/response functions. |
+| 18 | [Automation Framework - Part 3](#module-18-automation-framework---part-3) | Converting standalone tests into framework tests with shared specs/utilities. |
+| 19 | [Practice Exercise](#module-19-practice-exercise) | Convert an end-to-end workflow into framework-compatible format. |
+| 20 | [End-To-End Framework Execution](#module-20-end-to-end-framework-execution) | TestNG suite execution, Maven execution, command-line regression testing. |
+| 21 | [Git and GitHub – Version Control System](#module-21-git-and-github--version-control-system) | Git setup, commits, remotes, branches, conflict resolution, GitHub clone/check-in. |
+| 22 | [Continuous Integration with Jenkins](#module-22-continuous-integration-with-jenkins) | Jenkins setup, plugins, GitHub integration, freestyle jobs, CI execution. |
+| 23 | [Build Management with Maven](#module-23-build-management-with-maven) | Maven features, repositories, POM, lifecycle, commands, dependency resolution. |
+| 24 | [Conclusion](#module-24-conclusion) | Course wrap-up, next steps, framework improvement, portfolio-readiness. |
 
 ---
 
@@ -65,6 +65,7 @@ Rest-API-Automation-Ninja-Showcase/
 │   ├── tests/
 │   │   ├── GetRequestTest.java
 │   │   ├── PostRequestTest.java
+│   │   ├── PutPatchDeleteTest.java
 │   │   ├── JsonValidationTest.java
 │   │   ├── XmlValidationTest.java
 │   │   └── EndToEndWorkflowTest.java
@@ -131,43 +132,19 @@ Rest-API-Automation-Ninja-Showcase/
 
 ## Module 1: Introduction
 
-### Programming Concept Area
-
-This module introduces the course structure and final outcome: building practical REST API automation skills from manual REST client testing to a reusable Java REST Assured automation framework.
-
-### Code Sample
-
-```java
-public class CourseGoal {
-    public static void main(String[] args) {
-        System.out.println("Goal: Build a REST Assured API automation framework.");
-    }
-}
-```
-
-### Expected Output
-
-```text
-Goal: Build a REST Assured API automation framework.
-```
-
-### Expected Result
-
-The learner understands the course roadmap and the final framework objective.
-
-### Key Takeaways
-
-- API testing validates service behavior without relying on the UI.
-- REST Assured enables readable code-based API tests.
-- The course moves from basic requests to reusable framework design.
+This module introduces the course structure, support expectations, and learning outcomes. The technical tutorial starts with **Module 2: Java Setup and Installation**.
 
 ---
 
 ## Module 2: Java Setup and Installation
 
+### Module Details
+
+This module prepares the development environment required for REST Assured API automation. The learner installs a Java Development Kit, verifies Java compiler access, installs an IDE such as Eclipse, and confirms Maven availability for dependency management and test execution. The setup should work on both Windows and Mac, but environment variable configuration may differ by operating system.
+
 ### Programming Concept Area
 
-REST Assured automation requires a working Java environment. This module covers JDK installation, Eclipse installation, Mac/Windows setup, and environment verification.
+REST Assured tests are Java-based automated tests. Before writing API automation, the machine must be able to compile Java code, run Java classes, resolve Maven dependencies, and execute TestNG tests from the IDE and command line.
 
 ### Code Sample
 
@@ -196,65 +173,334 @@ Java setup is working
 
 ### Expected Result
 
-The terminal confirms the JDK, compiler, and Maven are available.
+The terminal confirms the JDK, compiler, and Maven are available. The IDE can run a Java class without build path errors.
 
 ### Key Takeaways
 
 - Install a JDK, not only a JRE.
-- Configure `JAVA_HOME` correctly.
+- Configure `JAVA_HOME` and system `PATH` correctly.
 - Verify Java and Maven before writing tests.
 - Use Eclipse, IntelliJ IDEA, or VS Code for Java automation.
+- Keep the Java version consistent between local development and CI.
 
 ---
 
 ## Module 3: REST API Introduction
 
+### Module Details
+
+This module explains the foundation of REST API testing. REST APIs expose resources through endpoint URLs. Each endpoint supports one or more HTTP methods that represent operations against those resources. API tests validate whether the server handles each operation correctly, returns the correct status code, sends the expected headers, provides the expected response body, responds within an acceptable time, and handles invalid input properly.
+
+REST API testing is usually faster and more stable than UI testing because it validates service behavior directly. A strong API test should answer several questions: Did the request reach the correct endpoint? Did the server interpret the method correctly? Did the authentication and headers work? Did the response status match the operation? Did the returned data match the expected business rule? Did invalid input fail safely?
+
 ### Programming Concept Area
 
-REST APIs expose resources through endpoints and HTTP methods. Common methods include `GET`, `POST`, `PUT`, and `DELETE`. API tests verify status codes, headers, body content, response time, and error behavior.
+REST APIs expose resources through endpoints and HTTP methods. Common methods include `GET`, `POST`, `PUT`, `PATCH`, and `DELETE`. API tests verify status codes, headers, body content, response time, authentication behavior, authorization behavior, and error behavior.
 
-### Code Sample
+### REST Resource Example
 
-```http
-GET /api/users/123 HTTP/1.1
-Host: api.example.com
-Accept: application/json
+```text
+Resource: users
+Base URL: https://jsonplaceholder.typicode.com
+Collection endpoint: /users
+Single-resource endpoint: /users/{id}
 ```
 
-```json
-{
-  "id": 123,
-  "name": "Brian",
-  "role": "QA Automation Engineer"
+### GET Method: Read a Resource
+
+`GET` retrieves data. It should not create, update, or delete server-side data.
+
+```java
+@Test
+public void shouldGetUserById() {
+    given()
+        .baseUri("https://jsonplaceholder.typicode.com")
+        .pathParam("id", 1)
+    .when()
+        .get("/users/{id}")
+    .then()
+        .statusCode(200)
+        .contentType(ContentType.JSON)
+        .body("id", equalTo(1))
+        .body("name", notNullValue());
 }
 ```
 
-### Expected Output
+**Expected Output**
 
 ```text
-Status: 200 OK
+Status code: 200
 Content-Type: application/json
-Response body contains user id, name, and role.
+id = 1
+name is present
 ```
 
-### Expected Result
+**Expected Result:** The API returns the requested user record and does not modify data.
 
-The API returns a successful response and a JSON body representing the requested resource.
+### POST Method: Create a Resource
+
+`POST` sends a request body to create a new resource or trigger a server-side action.
+
+```java
+@Test
+public void shouldCreatePost() {
+    String body = """
+        {
+          "title": "API automation",
+          "body": "REST Assured create request",
+          "userId": 1
+        }
+        """;
+
+    given()
+        .baseUri("https://jsonplaceholder.typicode.com")
+        .contentType(ContentType.JSON)
+        .body(body)
+    .when()
+        .post("/posts")
+    .then()
+        .statusCode(201)
+        .body("title", equalTo("API automation"))
+        .body("userId", equalTo(1));
+}
+```
+
+**Expected Output**
+
+```text
+Status code: 201
+Response body contains title = API automation
+Response body contains userId = 1
+```
+
+**Expected Result:** The API accepts the JSON payload and returns a created-style response.
+
+### PUT Method: Replace a Resource
+
+`PUT` usually replaces an entire resource. Tests should send all required fields, not only the field being changed.
+
+```java
+@Test
+public void shouldReplacePostWithPut() {
+    String body = """
+        {
+          "id": 1,
+          "title": "Updated title",
+          "body": "Updated full body",
+          "userId": 1
+        }
+        """;
+
+    given()
+        .baseUri("https://jsonplaceholder.typicode.com")
+        .contentType(ContentType.JSON)
+        .pathParam("id", 1)
+        .body(body)
+    .when()
+        .put("/posts/{id}")
+    .then()
+        .statusCode(200)
+        .body("title", equalTo("Updated title"))
+        .body("body", equalTo("Updated full body"));
+}
+```
+
+**Expected Output**
+
+```text
+Status code: 200
+Updated title returned
+Updated body returned
+```
+
+**Expected Result:** The API processes a full replacement update for the target resource.
+
+### PATCH Method: Partially Update a Resource
+
+`PATCH` updates only selected fields and leaves other fields unchanged.
+
+```java
+@Test
+public void shouldPartiallyUpdatePostWithPatch() {
+    String body = """
+        {
+          "title": "Patched title"
+        }
+        """;
+
+    given()
+        .baseUri("https://jsonplaceholder.typicode.com")
+        .contentType(ContentType.JSON)
+        .pathParam("id", 1)
+        .body(body)
+    .when()
+        .patch("/posts/{id}")
+    .then()
+        .statusCode(200)
+        .body("title", equalTo("Patched title"));
+}
+```
+
+**Expected Output**
+
+```text
+Status code: 200
+Patched title returned
+```
+
+**Expected Result:** The API updates only the submitted field.
+
+### DELETE Method: Remove a Resource
+
+`DELETE` removes a resource or marks it as deleted. Depending on the API, it may return `200 OK`, `202 Accepted`, or `204 No Content`.
+
+```java
+@Test
+public void shouldDeletePost() {
+    given()
+        .baseUri("https://jsonplaceholder.typicode.com")
+        .pathParam("id", 1)
+    .when()
+        .delete("/posts/{id}")
+    .then()
+        .statusCode(anyOf(equalTo(200), equalTo(204)));
+}
+```
+
+**Expected Output**
+
+```text
+Status code: 200 or 204
+Delete request completed successfully
+```
+
+**Expected Result:** The API accepts the delete operation for the target resource.
+
+### HEAD Method: Validate Headers Without Body
+
+`HEAD` retrieves response headers without downloading the response body. It is useful for checking availability, cache headers, and content type.
+
+```java
+@Test
+public void shouldReturnHeadersForHeadRequest() {
+    given()
+        .baseUri("https://jsonplaceholder.typicode.com")
+    .when()
+        .head("/posts/1")
+    .then()
+        .statusCode(200)
+        .header("Content-Type", notNullValue());
+}
+```
+
+**Expected Result:** The API returns headers without a full response body.
+
+### OPTIONS Method: Discover Supported Methods
+
+`OPTIONS` can expose which HTTP methods an endpoint supports.
+
+```java
+@Test
+public void shouldReturnAllowedMethods() {
+    given()
+        .baseUri("https://jsonplaceholder.typicode.com")
+    .when()
+        .options("/posts")
+    .then()
+        .statusCode(anyOf(equalTo(200), equalTo(204), equalTo(404), equalTo(405)));
+}
+```
+
+**Expected Result:** The test documents whether the API supports method discovery. Some public demo APIs may not implement `OPTIONS` consistently.
+
+### Request Headers to Validate
+
+```java
+given()
+    .baseUri("https://jsonplaceholder.typicode.com")
+    .header("Accept", "application/json")
+.when()
+    .get("/posts/1")
+.then()
+    .statusCode(200)
+    .header("Content-Type", containsString("application/json"));
+```
+
+**Expected Result:** The API returns a JSON-compatible content type.
+
+### Status Code Categories and Testing Meaning
+
+| Range | Category | Meaning | What API Tests Should Verify |
+|---|---|---|---|
+| `1xx` | Informational | Request received, processing continues. | Rare in standard REST Assured tests; usually handled by HTTP client. |
+| `2xx` | Success | Request succeeded. | Confirm correct success code for the method and business action. |
+| `3xx` | Redirection | Client must follow another URL. | Validate redirect location when redirects are part of the API contract. |
+| `4xx` | Client Error | Request is invalid, unauthorized, forbidden, or not found. | Confirm bad input fails safely with useful error messages. |
+| `5xx` | Server Error | Server failed while processing a valid-looking request. | Treat as failure unless specifically testing fault scenarios. |
+
+### Common Status Codes Explained
+
+| Code | Meaning | Detailed API Testing Expectation |
+|---|---|---|
+| `200 OK` | Request succeeded. | Expected for successful `GET`, many `PUT`, many `PATCH`, and some `DELETE` responses. Validate body and headers. |
+| `201 Created` | Resource created. | Expected for successful `POST` creation. Validate returned ID, location/header if available, and created body fields. |
+| `202 Accepted` | Request accepted but not finished. | Used for async operations. Validate tracking ID, job status endpoint, or follow-up polling behavior. |
+| `204 No Content` | Success with no body. | Common for successful `DELETE`. Validate empty body and correct status. |
+| `301/302` | Redirect. | Validate `Location` header if redirects are expected. Disable auto-redirect when testing redirect behavior directly. |
+| `304 Not Modified` | Cached resource unchanged. | Validate caching behavior with `ETag` or `If-None-Match` headers. |
+| `400 Bad Request` | Invalid request syntax/data. | Send malformed body, missing fields, invalid types, or invalid query params and verify error message. |
+| `401 Unauthorized` | Authentication missing or invalid. | Verify missing/expired token is rejected. Do not confuse with authorization. |
+| `403 Forbidden` | Authenticated but not allowed. | Verify a valid user without permission cannot access protected data. |
+| `404 Not Found` | Resource does not exist. | Verify invalid IDs return a clean not-found response. |
+| `405 Method Not Allowed` | Method not supported for endpoint. | Send an unsupported method and validate the API rejects it properly. |
+| `409 Conflict` | Request conflicts with current state. | Validate duplicate creation or version conflict behavior. |
+| `415 Unsupported Media Type` | Wrong content type. | Send body with incorrect `Content-Type` and verify rejection. |
+| `422 Unprocessable Entity` | Request syntax valid but business validation failed. | Validate business rule failures such as invalid email or invalid status transition. |
+| `429 Too Many Requests` | Rate limit exceeded. | Validate rate limit handling, retry headers, and client backoff strategy when applicable. |
+| `500 Internal Server Error` | Unexpected server failure. | Usually indicates a defect; API tests should capture request/response logs. |
+| `502/503/504` | Gateway/service timeout/unavailable. | Validate resilience, retries, and environment stability if testing distributed systems. |
+
+### Negative Test Example
+
+```java
+@Test
+public void shouldRejectInvalidPostBody() {
+    String invalidBody = "{ \"title\": \"\" }";
+
+    given()
+        .baseUri("https://api.example.com")
+        .contentType(ContentType.JSON)
+        .body(invalidBody)
+    .when()
+        .post("/posts")
+    .then()
+        .statusCode(anyOf(equalTo(400), equalTo(422)))
+        .body("message", notNullValue());
+}
+```
+
+**Expected Result:** The API rejects invalid input with a controlled client-error response and a useful error message.
 
 ### Key Takeaways
 
-- Endpoints identify resources.
-- HTTP methods describe operations.
-- Headers provide metadata.
-- API tests should validate status, body, headers, and timing.
+- Endpoints identify resources; methods define operations.
+- `GET`, `POST`, `PUT`, `PATCH`, and `DELETE` should be tested separately.
+- Status code validation must match the HTTP method and business rule.
+- Headers verify content type, caching, auth, and metadata behavior.
+- Negative tests are just as important as happy-path tests.
+- A complete API test validates status, headers, body, schema, response time, and error handling.
 
 ---
 
 ## Module 4: REST Client Setup
 
+### Module Details
+
+This module covers manual API client setup. REST clients let testers send requests without writing code, inspect raw responses, compare headers, save examples, use environment variables, and confirm the API contract before automation begins. Postman is especially useful for creating repeatable collections that can later be translated into REST Assured tests.
+
 ### Programming Concept Area
 
-REST clients such as Postman, Advanced REST Client, and REST Easy help testers manually explore APIs before automation.
+Manual API exploration is the bridge between documentation and automation. Before automating, confirm the endpoint, method, parameters, request body, authentication, and expected response.
 
 ### Code Sample
 
@@ -274,7 +520,7 @@ Accept: application/json
 
 ### Expected Result
 
-The REST client sends a request and displays response body, status, headers, and response time.
+The REST client sends a request and displays response body, status, headers, cookies, and response time.
 
 ### Key Takeaways
 
@@ -287,9 +533,13 @@ The REST client sends a request and displays response body, status, headers, and
 
 ## Module 5: REST API Testing Using Postman Client
 
+### Module Details
+
+This module applies Postman to practical API testing workflows. It covers reading documentation, sending GET/POST/DELETE requests, using API keys or headers, validating responses with Postman test scripts, and organizing requests into collections. It also introduces how API documentation formats such as WADL describe available operations.
+
 ### Programming Concept Area
 
-Postman can send GET, POST, PUT, and DELETE requests, validate responses, work with API keys, and document request workflows before those workflows are automated.
+Postman validates API behavior before code automation. A well-built Postman collection documents request setup and expected API behavior, which makes conversion to REST Assured easier.
 
 ### Code Sample
 
@@ -298,8 +548,13 @@ pm.test("Status code is 200", function () {
     pm.response.to.have.status(200);
 });
 
-pm.test("Response is JSON", function () {
-    pm.response.to.have.header("Content-Type");
+pm.test("Response has JSON content type", function () {
+    pm.expect(pm.response.headers.get("Content-Type")).to.include("application/json");
+});
+
+pm.test("Response has an id field", function () {
+    const json = pm.response.json();
+    pm.expect(json.id).to.exist;
 });
 ```
 
@@ -307,27 +562,32 @@ pm.test("Response is JSON", function () {
 
 ```text
 PASS Status code is 200
-PASS Response is JSON
+PASS Response has JSON content type
+PASS Response has an id field
 ```
 
 ### Expected Result
 
-Postman validates response expectations automatically after the request completes.
+Postman validates the response automatically after the request completes.
 
 ### Key Takeaways
 
 - API documentation defines endpoints, parameters, and expected responses.
 - API keys are commonly sent through headers or query parameters.
-- Postman tests can validate status codes and body fields.
+- Postman tests can validate status codes, headers, and body fields.
 - Manual workflows can be converted into REST Assured tests.
 
 ---
 
 ## Module 6: REST Assured Setup
 
+### Module Details
+
+This module sets up the Java automation project. It includes adding REST Assured dependencies, adding TestNG, importing static methods, configuring Maven, confirming IDE build path correctness, and running a first test to prove the framework is ready.
+
 ### Programming Concept Area
 
-REST Assured setup includes adding Maven dependencies, importing static methods, cleaning build path conflicts, and writing the first automated API test.
+REST Assured setup turns manual API calls into automated Java test cases that can be executed repeatedly from the IDE, command line, or CI server.
 
 ### Code Sample
 
@@ -371,9 +631,13 @@ The first REST Assured test runs successfully and validates status code and resp
 
 ## Module 7: REST API Automation Overview
 
+### Module Details
+
+This module introduces the core automation mechanics: sending GET and POST requests, extracting response data, understanding JSON hierarchy, validating nested fields, serializing Java objects into request bodies, and using query/path parameters correctly.
+
 ### Programming Concept Area
 
-This module covers GET/POST automation, response extraction, JSON hierarchy, response validation, Java object serialization, query parameters, and path parameters.
+API automation is not only about sending requests. It also verifies response structure, validates business data, extracts values for later calls, and ensures that API behavior remains stable across builds.
 
 ### Code Sample
 
@@ -386,7 +650,8 @@ public void validateJsonHierarchy() {
         .get("/users/1")
     .then()
         .statusCode(200)
-        .body("address.city", equalTo("Gwenborough"));
+        .body("address.city", equalTo("Gwenborough"))
+        .body("company.name", notNullValue());
 }
 ```
 
@@ -395,12 +660,13 @@ public void validateJsonHierarchy() {
 ```text
 Status code: 200
 address.city = Gwenborough
+company.name is present
 Test passed
 ```
 
 ### Expected Result
 
-REST Assured navigates a nested JSON hierarchy and validates a nested field.
+REST Assured navigates a nested JSON hierarchy and validates nested response fields.
 
 ### Key Takeaways
 
@@ -413,9 +679,13 @@ REST Assured navigates a nested JSON hierarchy and validates a nested field.
 
 ## Module 8: OAuth Real World API Example
 
+### Module Details
+
+This module explains authenticated API testing. OAuth and bearer-token patterns allow test clients to access protected endpoints. The framework should load credentials securely from environment variables, Maven profiles, Jenkins credentials, or secret stores rather than hardcoding them.
+
 ### Programming Concept Area
 
-OAuth allows authorized access to protected APIs. In a safe demo framework, credentials should be loaded from environment variables or secure CI secrets, not hardcoded in source code.
+Authenticated API testing verifies that protected endpoints allow valid clients and reject invalid, missing, expired, or unauthorized credentials.
 
 ### Code Sample
 
@@ -453,6 +723,10 @@ The API accepts the authenticated request when a valid token is supplied securel
 
 ## Module 9: Validating JSON Response
 
+### Module Details
+
+This module focuses on response extraction and JSON Path. API responses often contain nested objects, arrays, IDs, messages, flags, and business values. JSON Path lets tests extract and validate these values cleanly.
+
 ### Programming Concept Area
 
 JSON validation confirms that API responses contain correct fields, values, arrays, objects, and nested structures.
@@ -466,18 +740,22 @@ Response response = given()
     .get("/users");
 
 String firstUserName = response.jsonPath().getString("[0].name");
+List<String> emails = response.jsonPath().getList("email");
+
 System.out.println(firstUserName);
+System.out.println(emails.size());
 ```
 
 ### Expected Output
 
 ```text
 Leanne Graham
+10
 ```
 
 ### Expected Result
 
-The test extracts the first user's name from a JSON array response.
+The test extracts the first user's name and the number of email values from a JSON array response.
 
 ### Key Takeaways
 
@@ -489,6 +767,10 @@ The test extracts the first user's name from a JSON array response.
 ---
 
 ## Module 10: End-To-End API Workflow
+
+### Module Details
+
+This module covers complete API workflow automation. End-to-end API workflows are useful when business behavior spans multiple endpoints, such as create, read, update, and delete. The workflow should capture dynamic IDs, reuse them safely, and clean up any test-created data.
 
 ### Programming Concept Area
 
@@ -547,6 +829,10 @@ The workflow creates a record, stores the generated ID, and uses it in a depende
 
 ## Module 11: Validating XML Response
 
+### Module Details
+
+This module covers APIs that return XML. XML response testing is common in older enterprise systems, SOAP-adjacent services, configuration APIs, and systems that still expose XML contracts.
+
 ### Programming Concept Area
 
 Some APIs return XML instead of JSON. XML Path allows tests to extract and validate XML elements and attributes.
@@ -583,6 +869,10 @@ The test extracts an XML element value using XML Path.
 ---
 
 ## Module 12: Request and Response Logging
+
+### Module Details
+
+This module explains how to log request and response data. Logging is essential for diagnosing test failures, especially when a test passes locally but fails in CI. Good logging shows the request method, URL, headers, parameters, body, status code, and response body while avoiding secret exposure.
 
 ### Programming Concept Area
 
@@ -624,6 +914,10 @@ The test prints request details and response body, making failures easier to deb
 
 ## Module 13: REST Assured Assertions
 
+### Module Details
+
+This module covers validation strategy. API assertions should validate the response at several layers: status code, content type, required headers, required fields, field values, array sizes, schema expectations, and response timing. Hard assertions are useful when a failure should stop the test immediately. Soft assertions are useful when collecting several validation failures at once.
+
 ### Programming Concept Area
 
 Assertions verify API behavior. Hard assertions stop immediately. Soft assertions collect multiple failures and report them together.
@@ -662,6 +956,10 @@ The test validates multiple response properties before reporting the final resul
 ---
 
 ## Module 14: Useful Tricks
+
+### Module Details
+
+This module introduces REST Assured features that reduce repetition and improve readability. Root paths simplify repeated nested JSON assertions. Response time checks add basic performance validation. These techniques are useful when tests become longer and need cleaner organization.
 
 ### Programming Concept Area
 
@@ -702,6 +1000,10 @@ The test validates a nested field using root path and confirms the response time
 ---
 
 ## Module 15: REST Assured Specifications
+
+### Module Details
+
+This module explains request and response specifications. Specifications let the framework centralize repeated setup like base URI, base path, headers, authentication, content type, expected status code, expected content type, and response time limits. This prevents repeated configuration in every test.
 
 ### Programming Concept Area
 
@@ -751,6 +1053,10 @@ The test uses reusable request and response configuration instead of repeating s
 
 ## Module 16: Automation Framework - Part 1
 
+### Module Details
+
+This module begins framework design. The goal is to move from individual scripts into a maintainable test architecture. A framework should separate configuration, endpoints, reusable request setup, test data, model classes, utilities, and test classes.
+
 ### Programming Concept Area
 
 Framework design organizes constants, endpoints, configuration, dependencies, test classes, and reusable components.
@@ -789,6 +1095,10 @@ Tests can reference endpoints and base paths from centralized classes instead of
 ---
 
 ## Module 17: Automation Framework - Part 2
+
+### Module Details
+
+This module builds utility classes. Utilities reduce repeated REST Assured code, enforce common behavior, and make test classes easier to read. Utility methods can send common request types, apply specs, attach parameters, log failures, and return extracted responses.
 
 ### Programming Concept Area
 
@@ -843,9 +1153,13 @@ Test classes can call utility methods instead of rewriting REST Assured setup ev
 
 ## Module 18: Automation Framework - Part 3
 
+### Module Details
+
+This module converts raw test classes into framework-based tests. Instead of embedding URLs, credentials, parameters, and repeated setup in each class, tests use shared configuration and utilities. This makes the test suite easier to maintain as API coverage grows.
+
 ### Programming Concept Area
 
-This module converts standalone API tests into framework-compatible classes using shared specifications, constants, utility methods, and reusable validation.
+Standalone API tests become framework-compatible classes using shared specifications, constants, utility methods, and reusable validation.
 
 ### Code Sample
 
@@ -881,6 +1195,10 @@ A standalone API test now uses the framework structure and reusable utilities.
 ---
 
 ## Module 19: Practice Exercise
+
+### Module Details
+
+This module applies the previous framework concepts through practice. The learner converts an end-to-end workflow into framework format, uses utilities, extracts IDs, creates dependent tests, and validates that the workflow still behaves correctly.
 
 ### Programming Concept Area
 
@@ -929,6 +1247,10 @@ The workflow shares created response data across dependent test methods.
 
 ## Module 20: End-To-End Framework Execution
 
+### Module Details
+
+This module executes the complete framework using TestNG and Maven. The goal is to run tests consistently outside the IDE so the same suite can run locally, on a build agent, or in Jenkins.
+
 ### Programming Concept Area
 
 Framework execution uses TestNG suites and Maven commands to run all tests from the command line, locally or in CI.
@@ -973,6 +1295,10 @@ Maven runs the TestNG suite and reports successful framework execution.
 
 ## Module 21: Git and GitHub – Version Control System
 
+### Module Details
+
+This module introduces version control for automation projects. Git allows the tester to track changes, create branches, commit framework updates, push to GitHub, clone repositories, and resolve merge conflicts.
+
 ### Programming Concept Area
 
 Git tracks code changes. GitHub stores the repository remotely and supports collaboration, branching, conflict resolution, and project sharing.
@@ -1010,6 +1336,10 @@ The local automation framework is committed and pushed to GitHub.
 
 ## Module 22: Continuous Integration with Jenkins
 
+### Module Details
+
+This module connects the automation framework to Jenkins. Jenkins can pull the latest code from GitHub, run Maven commands, publish test results, and provide quick feedback when changes break the suite.
+
 ### Programming Concept Area
 
 Jenkins automates framework execution after code changes. A Jenkins job can pull from GitHub, run Maven tests, and report results.
@@ -1043,6 +1373,10 @@ Jenkins executes the REST API automation suite and reports build status.
 ---
 
 ## Module 23: Build Management with Maven
+
+### Module Details
+
+This module explains Maven as the build and dependency management tool. Maven standardizes project structure, downloads dependencies, runs plugins, manages the test lifecycle, and supports repeatable execution across local and CI machines.
 
 ### Programming Concept Area
 
@@ -1078,6 +1412,10 @@ Maven cleans the project, resolves dependencies, compiles tests, and executes th
 ---
 
 ## Module 24: Conclusion
+
+### Module Details
+
+This module wraps up the REST API automation learning path and identifies next steps. A strong portfolio-ready framework should include request and response specs, utility classes, clear endpoint constants, JSON/XML validation, negative tests, authentication tests, TestNG execution, Maven command-line support, source control, and CI execution.
 
 ### Programming Concept Area
 
@@ -1242,13 +1580,21 @@ given()
 |---|---|---|
 | 200 | OK | Successful read/update operation. |
 | 201 | Created | Successful create operation. |
+| 202 | Accepted | Async request accepted but not completed yet. |
 | 204 | No Content | Successful delete or update with no response body. |
+| 301/302 | Redirect | Validate `Location` header when redirects are expected. |
+| 304 | Not Modified | Validate cache behavior with ETag headers. |
 | 400 | Bad Request | Invalid request payload or parameters. |
 | 401 | Unauthorized | Missing or invalid authentication. |
 | 403 | Forbidden | Authenticated but not allowed. |
 | 404 | Not Found | Resource does not exist. |
+| 405 | Method Not Allowed | HTTP method is not supported by the endpoint. |
 | 409 | Conflict | Duplicate or conflicting resource state. |
+| 415 | Unsupported Media Type | Wrong request content type. |
+| 422 | Unprocessable Entity | Business validation failed. |
+| 429 | Too Many Requests | Rate limit exceeded. |
 | 500 | Internal Server Error | Server-side failure. |
+| 502/503/504 | Gateway/Unavailable/Timeout | Infrastructure or upstream service failure. |
 
 ---
 
